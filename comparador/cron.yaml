@@ -1,0 +1,5 @@
+cron:
+- description: task1
+  url: /scheduled
+  schedule: every 1 mins
+

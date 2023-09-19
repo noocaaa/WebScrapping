@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta charset="utf-8">
+            <title>StarFilm</title>
+            <meta name="Autores" content="Jaime Carrasco, Marta Nieto y Ignacio Titos">
+            <!--<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='inicio.css') }}">-->
+            <style>
+                *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+                    background-color:bisque;
+                }
+
+                .form-register {
+                    width: 400px;
+                    background: #232323;
+                    padding: 30px;
+                    margin:auto;
+                    margin-top: 100px;
+                    border-radius: 4px;
+                    font-family: 'calibri';
+                    color: aliceblue;
+                }
+
+                .form-register h4 {
+                    font-size: 22px;
+                    margin-bottom: 20px;
+                    background-color: #232323;
+                }
+
+                .form-register .control {
+                    width: 100%;
+                    background: #b5c3d0;
+                    padding: 10px;
+                    border-radius: 4px;
+                    margin-bottom: 16px;
+                    border: 1px solid #1f53;
+                    font-family: 'calibri';
+                    font-size: 18px;
+                }
+
+                .boton {
+                    display: inline-flex; 
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    color: beige;
+                    background: #45325f;
+                    border: none;
+                    padding: 12px;
+                    margin: 16px 0;
+                    font-size: 16px;
+                    cursor: pointer;
+                    text-transform: uppercase;
+                    transition: .3s ease all;
+                    border-radius: 5px;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .search {
+                    color: beige;
+                    background: #45325f;
+                }
+
+                .form-register .formulario {
+                    background: #232323;
+                }
+
+                h1 {
+                    text-align: center;
+                    justify-content: center;
+                    font-family: 'Bodoni MT';
+                    background-color: #232323;
+                    color: beige;
+                    border-width: 3%;
+                    border-color: #232323;
+                    border-style: solid;
+                    font-size: 300%;
+                }
+
+                .top-pelis{
+                    padding-top: 4%;
+                }
+
+                .top-pelis article{
+                    width: 33%;
+                    text-align: center;
+                    float: left;
+                    padding-left: 2%;
+                    padding-top: 2%;
+                }
+
+                .top-pelis h4{
+                    padding-bottom: 3%;
+                    font-size: 200%;;
+                    font-family: 'Bodoni MT';
+                }
+
+                img{
+                    width: 10%;
+                    height: 10%;
+                }
+
+            </style>
+        </head>
+        <body>
+            <header>
+                <h1>StarFilm Comparator</h1>
+            </header>
+            <main>
+            <section class="form-register">
+                <h4>Ingrese una Película</h4>
+                <form class = "formulario" action="/busqueda" method="post">
+                    <input class ="control" type="text" name="Buscador" placeholder="Película"/><br/>
+                    <button class ="boton"><span class="search">Search (Puede tardar unos mins)</span></button>
+                </form>
+            </section>
+            <section class="top-pelis">
+                <article>
+                    <h4>Top Netflix</h4>
+                    {% for elemento in pelis_nf %}
+                            <img src="{{elemento['poster']}}">
+                            <p>{{elemento['title']}}</p>
+                        <br/>
+                    {% endfor %}
+                </article>
+                <article>
+                    <h4>Top HBO</h4>
+                    {% for elemento in pelis_hbo %}
+                            <img src="{{elemento['poster']}}">
+                            <p>{{elemento['title']}}</p>
+                        <br/>
+                    {% endfor %}
+                </article>
+                <article>
+                    <h4>Top Movistar</h4>
+                    {% for elemento in pelis_mov %}
+                            <img src="{{elemento['poster']}}">
+                            <p>{{elemento['title']}}</p>
+                        <br/>
+                    {% endfor %}
+                </article>
+            </section>
+            </main>
+        </body>
+    </html>

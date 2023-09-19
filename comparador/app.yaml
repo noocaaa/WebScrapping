@@ -1,0 +1,17 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /
+  static_files: templates/inicio.html
+  upload: templates/inicio.html
+
+- url: /(.*)
+  static_files: templates/\1
+  upload: templates/(.*)
+  
+- url: /(.*)
+  static_files: templates/\1
+  upload: templates/(.*)
+    

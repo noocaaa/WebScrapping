@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>StarFilm</title>
+        <meta name="Autores" content="Jaime Carrasco, Marta Nieto y Ignacio Titos">
+        <style type = "text/css">
+
+                body{
+                    margin: 0;
+                    padding: 0;
+                    background-color: bisque;
+                }
+
+                header {
+                    text-align: center;
+                    float:left;
+                    width: 100%;
+                    height: 15%;
+                    font-family: 'Bodoni MT';
+                    background-color: #232323;
+                    color: beige;
+                    border: 5%;
+                    border-color: #232323;
+                    border-style: solid;
+                }
+
+                header h1{
+                    font-size: 300%;
+                }
+
+                
+                #presentacion{
+                    text-align: center;
+                    text-transform: capitalize;
+                    padding-top: 1%;
+                    font-family: 'Bodoni MT';
+                    font-size: 150%;
+                }
+
+                #presentacion img{
+                    height: 15%;
+                    width: 15%;
+                }
+
+                #tbpunt{
+                    text-align: center;
+                    
+                }
+
+                #tbpunt table{
+                    background-color: rgb(181, 125, 88);
+                    color: white;
+                }
+
+                #tbpunt th{
+                    font-weight: bold;
+                    font-style: italic;
+                }
+
+                #infogeneral{
+                    padding-left: 3%;
+                }
+
+                #infogeneral summary{
+                    font-weight: bold;
+                }
+
+                main p{
+                    text-align: center;
+                    font-family: 'Bodoni MT';
+                }
+            
+        </style>
+    </head>
+    <body>
+            <header>
+                <h1>StarFilm Comparator</h1>
+            </header>
+            <main>
+                <p>Resultados de la búsqueda: "{{busqueda}}"</p>
+                <br/>
+                {% for info in peliculas %}
+                <section id="presentacion">
+                    <h1>{{info[0]}}</h1>
+                    <img src='{{info[1]}}'>
+                </section>    
+                <section id="tbpunt">
+                    <table border="1", style="margin: 0 auto;">
+                        <tr>
+                            <th>Nota Filmaffinity</th>
+                            <th>Nota IMDb</th>  
+                            <th>Nota RottenTomatoes</th>
+                            <th>Nota Media</th>  
+                        </tr>
+                        <tr>
+                            <td>{{info[2]}}</td>
+                            <td>{{info[3]}}</td>
+                            <td>{{info[4]}}</td>
+                            <td>{{info[5]}}</td>
+                        </tr>
+                    </table>
+                    <br/>
+                </section>
+                <section id="infogeneral">
+                    <details>
+                        <summary>Actores:</summary>
+                        {% for actores in info[6] %}
+                        <p>{{actores}}</p>
+                        {% endfor %}
+                    </details>
+                    <details>
+                        <summary>Director/es:</summary>
+                        {% for dir in info[7] %}
+                        <p>{{dir}}</p>
+                        {% endfor %}
+                    </details>
+                    <details>
+                        <summary>Año de salida:</summary>
+                        <p>{{info[8]}}</p>
+                    </details>
+                    <details>
+                        <summary>Sinopsis</summary>
+                        <p>{{info[9]}}</p>
+                    </details>
+                </section>
+                {% endfor %}
+            </main>
+        </body>
+</html>
